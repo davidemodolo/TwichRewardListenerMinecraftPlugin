@@ -1,0 +1,64 @@
+# Get this from https://twitchtokengenerator.com/
+# Scope required: chat:read
+twitch_oauth_token: "oauth:YOUR_TOKEN_HERE"
+
+# The name of the twitch channel to join (all lowercase)
+channel_name: "ChannelName"
+
+# The username of the bot sending the messages (e.g. StreamElements)
+bot_username: "StreamElements"
+
+# The regex pattern to match the message.
+# Use capture groups () to extract the chest name and the player name.
+# The plugin expects:
+# Group 1: Chest Name
+# Group 2: Player Name
+# Example message: "TwitchUser opened a chestDiamondArmor for MinecraftUser"
+message_pattern: "^.* opened a (.*) for (.*)$"
+
+# Chests configuration
+# Types:
+# - fixed: Gives all items in the list with the specified amount.
+# - random_quantity: Gives each item with a random amount between 0 and max_amount.
+# - random_item: Gives one item from the list based on probability.
+chests:
+  chestIronStarterpack:
+    type: fixed
+    items:
+      - material: iron_pickaxe
+        amount: 1
+      - material: iron_shovel
+        amount: 1
+      - material: iron_axe
+        amount: 1
+      - material: iron_block
+        amount: 5
+  chestWood:
+    type: random_quantity
+    items:
+      - material: oak_log
+        max_amount: 5
+      - material: stick
+        max_amount: 34
+      - material: chest
+        max_amount: 6
+  chestDiamondArmorPiece:
+    type: random_item
+    items:
+      - material: diamond_helmet
+        amount: 1
+        probability: 25.0
+        enchantments:
+          - name: protection
+            level: 4
+          - name: unbreaking
+            level: 3
+      - material: diamond_chestplate
+        amount: 1
+        probability: 25.0
+      - material: diamond_leggings
+        amount: 1
+        probability: 25.0
+      - material: diamond_boots
+        amount: 1
+        probability: 25.0
