@@ -8,6 +8,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -68,6 +70,26 @@ public class TwitchRewardListener extends JavaPlugin {
         if (twitchClient != null) {
             twitchClient.close();
         }
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (command.getName().equalsIgnoreCase("twitchreward")) {
+            if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
+                if (!sender.hasPermission("twitchreward.admin")) {
+                    sender.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
+                    return true;
+                }
+                
+                reloadConfig();
+                loadConfigValues();
+                sender.sendMessage(ChatColor.GREEN + "[TwitchReward] Configuration reloaded!");
+                return true;
+            }
+            sender.sendMessage(ChatColor.RED + "Usage: /twitchreward reload");
+            return true;
+        }
+        return false;
     }
 
     private void loadConfigValues() {

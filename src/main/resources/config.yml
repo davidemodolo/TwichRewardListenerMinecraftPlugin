@@ -2,7 +2,7 @@
 # Scope required: chat:read
 twitch_oauth_token: "oauth:YOUR_TOKEN_HERE"
 
-# The name of the twitch channel to join (all lowercase)
+# The name of the twitch channel to join
 channel_name: "ChannelName"
 
 # The username of the bot sending the messages (e.g. StreamElements)
