@@ -82,6 +82,11 @@ chests:
         probability: 90.0
 ```
 
+## Commands
+
+-   `/twitchreward reload`: Reloads the configuration from `config.yml`.
+    -   **Permission**: `twitchreward.admin` (Default: OP)
+
 ## Author
 
 **Davide Modolo**
